@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakhi Ladies Tailor | सखी लेडीज टेलर | Kranti Biranje | Diva, Thane</title>
+    <meta name="description" content="सखी लेडीज टेलर - क्रांती बिरंजे. साडी, ब्लाउज, फ्रॉक, सलवार शिवण काम केले जाते. घरगुती उद्योग - लेडीज टेलर – घरगुती उद्योग, कौशल्याची ओळख, सौंदर्याची झलक!. Diva, Thane.">
+
+    <!-- ============================================
+         GOOGLE FONTS - Typography styles
+         Poppins: English text
+         Noto Sans Devanagari: Marathi/Hindi text
+         ============================================ -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS VARIABLES - Color Scheme
+           Change these colors to change entire site theme
+           ============================================ */
+        :root {
+            --primary: #e91e63;        /* Main pink color */
+            --primary-light: #f8bbd9;  /* Light pink */
+            --primary-dark: #c2185b;   /* Dark pink */
+            --gold: #ffd700;           /* Gold accent */
+            --gold-light: #fff8e1;     /* Light gold */
+            --dark: #2c0b1e;           /* Dark text */
+            --light: #fff5f8;          /* Light background */
+            --text: #4a4a4a;           /* Body text */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           LANGUAGE SWITCHER - Top right corner
+           Allows users to switch between Marathi/Hindi/English
+           ============================================ */
+        .lang-switcher {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 999;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 5px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            padding: 8px 15px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #e91e63 0%, #f06292 100%);
+            color: white;
+        }
+
+        /* ============================================
+           NAVIGATION BAR - Fixed at top
+           Contains logo and menu links
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(233, 30, 99, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .logo i { font-size: 2rem; color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* ============================================
+           HERO SECTION - Main banner area
+           EDIT IMAGE: Change the src URL in the img tag below
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            display: block;
+        }
+
+        /* Language-specific text classes */
+        .lang-mr, .lang-hi, .lang-en { display: none; }
+        .lang-mr.active, .lang-hi.active, .lang-en.active { display: block; }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+
+        .hero-desc {
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: var(--primary-dark);
+        }
+
+        .badge i { color: var(--gold); }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e91e63 0%, #f06292 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+
+        /* HERO IMAGE - EDIT HERE */
+        /* To change image: Replace the src URL with your image URL */
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card h4 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ============================================
+           SERVICES SECTION - What we offer
+           6 service cards with icons
+           ============================================ */
+        .services {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header h2 span { color: var(--primary); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid var(--primary-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.15);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f8bbd9 0%, #fce4ec 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .service-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--gold-light);
+            color: var(--dark);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* ============================================
+           SAREE TYPES SECTION - Product showcase
+           6 saree cards with images
+           EDIT IMAGES: Change src in each saree-card img tag
+           ============================================ */
+        .sarees {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+        }
+
+        .saree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .saree-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .saree-card:hover { transform: translateY(-10px); }
+
+        /* SAREE IMAGE - EDIT HERE */
+        /* To change saree image: Replace the src URL below */
+        .saree-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .saree-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .saree-content {
+            padding: 1.5rem;
+        }
+
+        .saree-content h3 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+
+        .saree-features {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .feature-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           ABOUT SECTION - Owner information
+           EDIT IMAGE: Change the src in about-image img tag
+           ============================================ */
+        .about {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* ABOUT IMAGE - EDIT HERE */
+        /* To change owner photo: Replace the src URL below */
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 20px;
+            right: -20px;
+            background: linear-gradient(135deg, #e91e63 0%, #f06292 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+        }
+
+        .experience-badge h3 { font-size: 2rem; margin-bottom: 0.2rem; }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-content h2 span { color: var(--primary); }
+
+        .about-content .subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .about-content p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .about-feature i { color: var(--primary); }
+
+        /* ============================================
+           CONTACT SECTION - Form and details
+           ============================================ */
+        .contact {
+            padding: 5rem 5%;
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info h2 span { color: var(--primary-light); }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item div h4 {
+            margin-bottom: 0.3rem;
+            color: var(--gold);
+        }
+
+        .contact-item div p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ffd700 0%, #ffecb3 100%);
+            color: var(--dark);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* ============================================
+           GOOGLE MAPS SECTION
+           EDIT: Replace the iframe src with your actual Google Maps embed URL
+           ============================================ */
+        .map-section {
+            height: 400px;
+            background: #eee;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ============================================
+           WHATSAPP FLOATING BUTTON - Bottom right
+           Always visible, opens WhatsApp chat
+           ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* ============================================
+           FOOTER - Bottom of page
+           ============================================ */
+        footer {
+            background: #1a0512;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================
+           MOBILE MENU - Slide from right
+           ============================================ */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 5rem 2rem;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.active { right: 0; }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - Mobile/Tablet
+           ============================================ */
+        @media (max-width: 768px) {
+            .lang-switcher { top: 80px; right: 10px; }
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero-container,
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero { padding-top: 6rem; }
+            .hero-content { order: 2; }
+            .hero-image { order: 1; }
+            .about-features { grid-template-columns: 1fr; }
+            .experience-badge {
+                right: 10px;
+                bottom: 10px;
+                padding: 1rem;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- ============================================
+         LANGUAGE SWITCHER - Top Right
+         Click to change site language
+         ============================================ -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="changeLang('mr')">मराठी</button>
+        <button class="lang-btn" onclick="changeLang('hi')">हिंदी</button>
+        <button class="lang-btn" onclick="changeLang('en')">English</button>
+    </div>
+
+    <!-- ============================================
+         NAVIGATION BAR
+         Logo + Menu Links
+         ============================================ -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-cut"></i>
+            <span>Sakhi Ladies Tailor</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#sarees">Saree Types</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         MOBILE MENU - Hidden by default
+         Slides in from right when hamburger clicked
+         ============================================ -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
+            <li><a href="#sarees" onclick="toggleMobileMenu()">Saree Types</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================
+         HERO SECTION - Main Banner
+         EDIT IMAGE: Change the src URL below to your image
+         ============================================ -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <!-- Language: Marathi (Default) -->
+                <div class="hero-text lang-mr active">
+                    <div class="hero-subtitle">क्रांती बिरंजे</div>
+                    <h1>Sakhi Ladies Tailor <span>सखी लेडीज टेलर</span></h1>
+                    <p class="hero-desc">
+                        साडी, ब्लाउज, फ्रॉक, सलवार, नऊवारी साडी व ड्रेस यांचे प्रीमियम शिवणकाम केले जाते. 
+                        लेडीज टेलर – घरगुती उद्योग, कौशल्याची ओळख, सौंदर्याची झलक!. Diva, Thane.
+                    </p>
+                    <div class="hero-badges">
+                        <div class="badge"><i class="fas fa-home"></i><span>घरगुती उद्योग</span></div>
+                        <div class="badge"><i class="fas fa-female"></i><span>महिलांसाठी सेवा</span></div>
+                        <div class="badge"><i class="fas fa-map-marker-alt"></i><span>Diva (E), Thane</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/919326194200?text=Namaste!" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp करा
+                        </a>
+                        <a href="tel:+919326194200" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> कॉल करा
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language: Hindi -->
+                <div class="hero-text lang-hi">
+                    <div class="hero-subtitle">क्रांती बिरंजे</div>
+                    <h1>Sakhi Ladies Tailor <span>सखी लेडीज टेलर</span></h1>
+                    <p class="hero-desc">
+                        साड़ी, ब्लाउज, फ्रॉक, सलवार सिलाई का काम। पारंपरिक महिला पोशाक का काम किया जाता है। 
+                        लेडीज़ टेलर – घरेलू उद्योग, कौशल की पहचान, सुंदरता की झलक!। Diva, Thane.
+                    </p>
+                    <div class="hero-badges">
+                        <div class="badge"><i class="fas fa-home"></i><span>घरेलू उद्योग</span></div>
+                        <div class="badge"><i class="fas fa-female"></i><span>महिलाओं के लिए सेवा</span></div>
+                        <div class="badge"><i class="fas fa-map-marker-alt"></i><span>Diva (E), Thane</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/919326194200?text=Namaste!" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp करें
+                        </a>
+                        <a href="tel:+919326194200" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> कॉल करें
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language: English -->
+                <div class="hero-text lang-en">
+                    <div class="hero-subtitle">Kranti Biranje</div>
+                    <h1>Sakhi Ladies Tailor <span>Traditional Stitching</span></h1>
+                    <p class="hero-desc">
+                        Saree, Blouse, Frock, Salwar stitching work. Traditional women's clothing tailoring. 
+                        Ladies Tailor – Homegrown Industry, A Mark of Skill, A Touch of Beauty!. Diva, Thane, Maharashtra.
+                    </p>
+                    <div class="hero-badges">
+                        <div class="badge"><i class="fas fa-home"></i><span>Home Business</span></div>
+                        <div class="badge"><i class="fas fa-female"></i><span>Ladies Service</span></div>
+                        <div class="badge"><i class="fas fa-map-marker-alt"></i><span>Diva (E), Thane</span></div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/919326194200?text=Hi!" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Now
+                        </a>
+                        <a href="tel:+919326194200" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HERO IMAGE - EDIT HERE -->
+            <!-- To change: Replace the src URL with your image URL -->
+            <div class="hero-image" data-aos="fade-left">
+                <img src="https://sl.bing.net/e0SBe7fNw3E" alt="Traditional Indian Saree">
+                <div class="floating-card">
+                    <h4>१५+</h4>
+                    <p>वर्षांचा अनुभव</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES SECTION - 6 Service Cards
+         ============================================ -->
+    <section class="services" id="services">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our <span>Services</span></h2>
+            <p>आमच्या सेवा पाहा</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1: Saree Stitching -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-female"></i></div>
+                <h3>साडी शिवणकाम</h3>
+                <p>मस्तानी, शाही मस्तानी, राजलक्ष्मी, ब्राह्मणी, पेशवाई मस्तानी आदि साड्यांचे शिवणकाम</p>
+                <span class="service-tag">कस्टम डिझाइन</span>
+            </div>
+
+            <!-- Service 2: Blouse Fitting -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+                <h3>ब्लाउज फिटिंग</h3>
+                <p> कटोरी ब्लाउज, प्रिंसेस कट ब्लाउज, डिझायनर ब्लाउज, डीप नेक ब्लाउज, बोट नेक ब्लाउज आदि</p>
+                <span class="service-tag">परफेक्ट फिटिंग</span>
+            </div>
+
+            <!-- Service 3: Frock & Dress -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+                <h3>फ्रॉक व ड्रेस</h3>
+                <p>मुलींसाठी व महिलांसाठी फ्रॉक, कुर्ती, लेहंगा यांचे शिवणकाम</p>
+                <span class="service-tag">स्टाइलिश डिझाइन</span>
+            </div>
+
+            <!-- Service 4: Alteration -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon"><i class="fas fa-cut"></i></div>
+                <h3>अल्टरेशन</h3>
+                <p>साईज बदल, पॅटर्न बदल, लांबी कमी करणे  आदि काम</p>
+                <span class="service-tag">त्वरित सेवा</span>
+            </div>
+
+            <!-- Service 5: Salwar Suit -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon"><i class="fas fa-vest"></i></div>
+                <h3>सलवार सूट</h3>
+                <p>पंजाबी, चूडीदार, अफगानी, प्लाझो सलवार शिवण काम</p>
+                <span class="service-tag">पारंपरिक डिझाइन</span>
+            </div>
+
+            <!-- Service 6: Special Design -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-icon"><i class="fas fa-magic"></i></div>
+                <h3>स्पेशल डिझाइन</h3>
+                <p>हातकाम, मणीकाम, आरी वर्क </p>
+                <span class="service-tag">कौशल्याची ओळख</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SAREE TYPES SECTION - Product Gallery
+         EDIT IMAGES: Change the src URLs in each card
+         ============================================ -->
+    <section class="sarees" id="sarees">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Saree <span>Types</span> साडी प्रकार</h2>
+            <p>तुमच्या आवडीप्रमाणे विविध साड्या शिवून मिळतील!</p>
+        </div>
+
+        <div class="saree-grid">
+            <!-- Saree 1: Mastani -->
+            <div class="saree-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="saree-image">
+                    <!-- EDIT IMAGE: Replace src with your Mastani saree image -->
+                    <img src="https://www.google.com/imgres?q=mastani%20saree%20HD%20image&imgurl=https%3A%2F%2Fshubhakanya.com%2Fstorage%2Fmedia%2FSymLZ0FPR4dhNX6UT5owTQ3fZ7GK7WpZ41glScMC.jpg&imgrefurl=https%3A%2F%2Fwww.shubhakanya.com%2Fproducts%2Fshahi-mastani-ready-to-wear-saree-LaTI4aOU&docid=d3fZ6O-5_i6-CM&tbnid=Tg0wf7q6bmarrM&vet=12ahUKEwjmgv2Z2OySAxU1xDgGHZSUK8MQnPAOegQIMBAB..i&w=1150&h=1725&hcb=2&ved=2ahUKEwjmgv2Z2OySAxU1xDgGHZSUK8MQnPAOegQIMBAB=crop" alt="Mastani Saree">
+                </div>
+                <div class="saree-content">
+                    <h3>मस्तानी (Mastani)</h3>
+                    <p>प्युअर सॉफ्ट सिल्क काठी आणि रोयल लुक देण्यासाठी आदर्श साडी</p>
+                    <div class="saree-features">
+                        <span class="feature-tag">मृदु काठी</span>
+                        <span class="feature-tag">सुवासिक</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saree 2: Shahi Mastani -->
+            <div class="saree-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="saree-image">
+                    <!-- EDIT IMAGE: Replace src with your Shahi Mastani saree image -->
+                    <img src="https://www.google.com/imgres?q=mastani%20saree%20HD%20image&imgurl=https%3A%2F%2Fimage.wedmegood.com%2Fresized-nw%2F600X%2Fwp-content%2Fuploads%2F2019%2F07%2F1568396426_A_R_Wed32.jpg&imgrefurl=https%3A%2F%2Fpaqej.fr%2F%3Fl%3D20640467091710&docid=3_rtapqm6jpDDM&tbnid=FoV8fQAqMbVaZM&vet=12ahUKEwjmgv2Z2OySAxU1xDgGHZSUK8MQnPAOegQIcBAB..i&w=600&h=900&hcb=2&itg=1&ved=2ahUKEwjmgv2Z2OySAxU1xDgGHZSUK8MQnPAOegQIcBAB=crop" alt="Shahi Mastani">
+                </div>
+                <div class="saree-content">
+                    <h3>शाही मस्तानी (Shahi Mastani)</h3>
+                    <p>शाही मस्तानी नऊवारी – सौंदर्य आणि परंपरेची शान</p>
+                    <div class="saree-features">
+                        <span class="feature-tag">जड काम</span>
+                        <span class="feature-tag">लग्नासाठी</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saree 3: Rajlakshmi -->
+            <div class="saree-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="saree-image">
+                    <!-- EDIT IMAGE: Replace src with your Rajlakshmi saree image -->
+                    <img src="https://images.unsplash.com/photo-1583391733950-5e13505200b9?w=600&h=400&fit=crop" alt="Rajlakshmi">
+                </div>
+                <div class="saree-content">
+                    <h3>राजलक्ष्मी (Rajlakshmi)</h3>
+                    <p>राजलक्ष्मी – प्रत्येक नक्षीतून झळकणारी शान – राजसी लुकसह</p>
+                    <div class="saree-features">
+                        <span class="feature-tag">प्रीमियम</span>
+                        <span class="feature-tag">राजसी लुक</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saree 4: Braahmani -->
+            <div class="saree-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="saree-image">
+                    <!-- EDIT IMAGE: Replace src with your Braahmani saree image -->
+                    <img src="https://womensbeautyoffers.com/wp-content/uploads/2022/08/Brahmani-Nauvari-Saree-872x1024.jpg=crop" alt="Braahmani">
+                </div>
+                <div class="saree-content">
+                    <h3>ब्राह्मणी (Braahmani)</h3>
+                    <p> ब्राह्मणी – परंपरेतून आलेली खास झलक – ट्रेडिशनल डिझाइन </p>
+                    <div class="saree-features">
+                        <span class="feature-tag">ब्राह्मणी </span>
+                        <span class="feature-tag">सुंदर</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saree 5: Peshwai Mastani -->
+            <div class="saree-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="saree-image">
+                    <!-- EDIT IMAGE: Replace src with your Peshwai saree image -->
+                    <img src="https://www.bing.com/images/search?view=detailV2&ccid=UXH%2FaoOC&id=0176E2BC8B32ADB7CD916BA097E4B90677C0D148&thid=OIP.UXH_aoOCidFv-TLHcLVzgAHaIK&mediaurl=https%3A%2F%2F5.imimg.com%2Fdata5%2FUG%2FEL%2FMY-30399759%2Fmastani-or-peshwai-nauvari-saree-1000x1000.jpg&exph=1000&expw=907&q=Peshwai+Mastani+saree&form=IRPRST&ck=CA3BA12776987AC8DD1D93D8CF017F61&selectedindex=4&itb=0&cw=1375&ch=659&ajaxhist=0&ajaxserp=0&cit=ccid_CmL0t6eJ*cp_DA6D6E14B6B62B05F14E0F18CCB7E5D2*mid_A2CE15403074C58D4794710D4AA4A9ACE6522F4C*thid_OIP.CmL0t6eJgj!_57MUG2R-H!_AHaJ4&vt=2=crop" alt="Peshwai Mastani">
+                </div>
+                <div class="saree-content">
+                    <h3>पेशवाई मस्तानी (Peshwai Mastani)</h3>
+                    <p>मराठी पेशवाई मस्तानी – प्रत्येक प्रसंगासाठी अद्वितीय आकर्षण</p>
+                    <div class="saree-features">
+                        <span class="feature-tag">सांस्कृतिक</span>
+                        <span class="feature-tag">उत्सवासाठी</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saree 6: Custom Design -->
+            <div class="saree-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="saree-image">
+                    <!-- EDIT IMAGE: Replace src with your custom design image -->
+                    <img src="https://https://www.bing.com/images/search?view=detailV2&ccid=3yPbCY3D&id=8BCA755926BDAA1D914A899B5FDBAF4A6F717B98&thid=OIP.3yPbCY3Da5MnNMS5ut9E3AHaF2&mediaurl=https%3a%2f%2fi.pinimg.com%2foriginals%2fe9%2fff%2fc1%2fe9ffc1fccc946d5813feba1b34bedb32.jpg&exph=581&expw=736&q=blouse+and+dress+coustome+design&FORM=IRPRST&ck=AC5FDA196F9F6CAA2D31EC556A0EC142&selectedIndex=19&itb=0=crop" alt="Custom Design">
+                </div>
+                <div class="saree-content">
+                    <h3>कस्टम डिझाइन</h3>
+                    <p>आपल्या आवडीनुसार कोणताही डिझाइन आम्ही तयार करू शकतो</p>
+                    <div class="saree-features">
+                        <span class="feature-tag">ब्लाउज </span>
+                        <span class="feature-tag">ड्रेस </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ABOUT SECTION - Owner Information
+         EDIT IMAGE: Replace the src in about-image
+         ============================================ -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <!-- ABOUT IMAGE - EDIT HERE -->
+            <!-- To change owner photo: Replace the src URL below -->
+            <div class="about-image" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=700&fit=crop" alt="Kranti Biranje - Tailor">
+                <div class="experience-badge">
+                    <h3>15+</h3>
+                    <p>वर्षांचा<br>अनुभव</p>
+                </div>
+            </div>
+
+            <div class="about-content" data-aos="fade-left">
+                <h2>About <span>Kranti Biranje</span></h2>
+                <div class="subtitle">मी क्रांती बिरंजे, सखी लेडीज टेलर</div>
+                <p>
+                    नमस्कार! मी क्रांती बिरंजे, सखी लेडीज टेलर. मी Diva (E), Thane मध्ये घरगुती उद्योग चालवते. 
+                    मी महिलांसाठी साडी, ब्लाउज, फ्रॉक,ड्रेस, सलवार आदि शिवणकाम करते.
+                </p>
+                <p>
+                    माझ्याकडे 15+ वर्षांचा अनुभव आहे. मी नियमितपणे परफेक्ट फिटिंगचे काम करते. 
+                    आम्ही तुमचे काम विश्वासाने करून देतो..
+                </p>
+                <p>
+                    शिवणकामाच्या सेवेसाठी संपर्क साधा.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>उत्कृष्ट गुणवत्ता</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>वेळेवर काम</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>परफेक्ट फिटिंग</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>दरजेदार दर</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT SECTION - Form and Details
+         ============================================ -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <h2>Contact <span>Us</span></h2>
+                <p>आम्हाला संपर्क करा. विश्वासार्ह काम आणि उत्कृष्ट सेवा – तुमच्यासाठी.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <h4>मालक</h4>
+                            <p>Kranti Biranje (क्रांती बिरंजे)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>फोन</h4>
+                            <p>+91 93261 94200</p>
+                            <p style="font-size: 0.85rem; margin-top: 5px;">
+                                <a href="tel:+919326194200" style="color: var(--gold); text-decoration: none;">
+                                    <i class="fas fa-phone-alt"></i> कॉल करण्यासाठी क्लिक करा
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+91 93261 94200</p>
+                            <p style="font-size: 0.85rem; margin-top: 5px;">
+                                <a href="https://wa.me/919326194200?text=Namaste%20Kranti%20Tai!" target="_blank" style="color: #25d366; text-decoration: none;">
+                                    <i class="fab fa-whatsapp"></i> व्हॉट्सअप वर मेसेज पाठवा
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>पत्ता</h4>
+                            <p>406, 4th Floor, Mahalaxmi Apartment<br>
+                            Mumbradevi Colony, Above Cambridge English School<br>
+                            Diva (E), Thane - 400612<br>
+                            Maharashtra, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form" data-aos="fade-left">
+                <h3>Send Message / मेसेज पाठवा</h3>
+                <form id="contactForm" onsubmit="sendToWhatsApp(event)">
+                    <div class="form-group">
+                        <label>Your Name / आपले नाव *</label>
+                        <input type="text" id="name" required placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number / फोन नंबर *</label>
+                        <input type="tel" id="phone" required placeholder="+91 98765 43210">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Service Required / कोणती सेवा हवी आहे? *</label>
+                        <select id="service" required>
+                            <option value="">Select Service...</option>
+                            <option value="साडीचे शिवणकाम">साडीचे शिवणकाम (Saree Stitching)</option>
+                            <option value="ब्लाउज शिवणकाम">ब्लाउज शिवणकाम (Blouse Fitting)</option>
+                            <option value="फ्रॉक/ड्रेस">फ्रॉक/ड्रेस (Frock/Dress)</option>
+                            <option value="सलवार सूट">सलवार सूट (Salwar Suit)</option>
+                            <option value="अल्टरेशन">अल्टरेशन (Alteration)</option>
+                            <option value="इतर">इतर (Other)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message / संदेश *</label>
+                        <textarea id="message" required placeholder="Please describe your requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GOOGLE MAPS SECTION
+         EDIT: Replace iframe src with actual Google Maps URL
+         ============================================ -->
+    <section class="map-section">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.1234567890123!2d73.12345678901234!3d19.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA3JzI0LjQiTiA3M8KwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- ============================================
+         WHATSAPP FLOATING BUTTON - Bottom Right
+         Always visible, opens WhatsApp chat
+         ============================================ -->
+    <a href="https://wa.me/919326194200?text=Namaste%20Kranti%20Tai!" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ============================================
+         FOOTER - Bottom of page
+         ============================================ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-cut"></i>
+                Sakhi Ladies Tailor
+            </div>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                सखी लेडीज टेलर - क्रांती बिरंजे<br>
+                घरगुती उद्योग | Diva (E), Thane
+            </p>
+
+            <div class="social-links">
+                <a href="https://wa.me/919326194200" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="tel:+919326194200" title="Call">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="#contact" title="Location">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+            </div>
+
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                © 2026 Sakhi Ladies Tailor.  <span style="color: var(--primary);">♥</span> 
+            </p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">
+                घरगुती उद्योग | विश्वासार्ह सेवा | दरजेदार काम
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT - Functionality
+         ============================================ -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS Animation Library
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        }
+
+        // Language Switcher - FIXED VERSION
+        function changeLang(lang) {
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Hide all language content
+            document.querySelectorAll('.hero-text').forEach(el => el.classList.remove('active'));
+
+            // Show selected language
+            document.querySelector('.lang-' + lang).classList.add('active');
+        }
+
+        // WhatsApp Form Submission
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappMessage = `Namaste Kranti Tai!%0A%0A` +
+                `Name: ${name}%0A` +
+                `Phone: ${phone}%0A` +
+                `Service: ${service}%0A` +
+                `Message: ${message}%0A%0A` +
+                `I am interested in your tailoring services.`;
+
+            const whatsappURL = `https://wa.me/919326194200?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
